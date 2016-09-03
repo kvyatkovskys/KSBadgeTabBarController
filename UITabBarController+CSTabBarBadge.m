@@ -1,9 +1,8 @@
 //
 //  UITabBarController+CSTabBarBadge.m
-//  Nordman
 //
 //  Created by Пользователь on 31.08.16.
-//  Copyright © 2016 CoffeeStudio. All rights reserved.
+//  Copyright © 2016 Kvyatkovskys. All rights reserved.
 //
 
 #import "UITabBarController+CSTabBarBadge.h"
@@ -12,28 +11,30 @@
 @implementation UITabBarController (CSTabBarBadge)
 
 + (void)setBageValue:(NSString *)value badgeIndex:(NSInteger)index badgeColor:(UIColor *)color inTabBarController:(UITabBarController *)tabBarController positionX:(CGFloat)x {    
-    UIView *viewBadge = [[UIView alloc] initWithFrame:CGRectMake(x, 3, 18, 18)];
-    [viewBadge setBackgroundColor:color];
-    viewBadge.layer.cornerRadius = 9.f;
-    viewBadge.tag = 10;
-    
-    UILabel *badge = [[UILabel alloc]init];
-    badge.text = value;
-    badge.tag = 11;
-    badge.textAlignment = NSTextAlignmentCenter;
-    badge.font = [UIFont systemFontOfSize:13];
-    badge.frame = CGRectMake(0, 0, 18, 18);
-    badge.textColor = [UIColor whiteColor];
-    badge.backgroundColor = [UIColor clearColor];
-    [viewBadge addSubview:badge];
-    
-    [tabBarController.tabBar addSubview:viewBadge];
+    if(![value isEqualToString:@"0"]) {
+        UIView *viewBadge = [[UIView alloc] initWithFrame:CGRectMake(x, 3, 18, 18)];
+        [viewBadge setBackgroundColor:color];
+        viewBadge.layer.cornerRadius = 9.f;
+        viewBadge.tag = 10;
+        
+        UILabel *badge = [[UILabel alloc]init];
+        badge.text = value;
+        badge.tag = 11;
+        badge.textAlignment = NSTextAlignmentCenter;
+        badge.font = [UIFont systemFontOfSize:13];
+        badge.frame = CGRectMake(0, 0, 18, 18);
+        badge.textColor = [UIColor whiteColor];
+        badge.backgroundColor = [UIColor clearColor];
+        [viewBadge addSubview:badge];
+        
+        [tabBarController.tabBar addSubview:viewBadge];
+    }
 }
 
 + (void)setBageValue:(NSString *)value withAnimation:(BOOL)animation tabBarController:(UITabBarController *)tabBarController {
     for (UIView *view in tabBarController.tabBar.subviews) {
         if ([view isKindOfClass:[UIView class]] & (view.tag == 10)) {
-            if (value == nil) {
+            if ([value isEqualToString:@"0"]) {
                 view.hidden = TRUE;
             } else {
                 view.hidden = FALSE;
