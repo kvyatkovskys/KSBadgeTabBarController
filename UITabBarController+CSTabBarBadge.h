@@ -1,9 +1,8 @@
 //
 //  UITabBarController+CSTabBarBadge.h
-//  Nordman
 //
 //  Created by Пользователь on 31.08.16.
-//  Copyright © 2016 CoffeeStudio. All rights reserved.
+//  Copyright © 2016 Kvyatkovskys. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
